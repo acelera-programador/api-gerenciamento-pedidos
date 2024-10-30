@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body{
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #505F98;
+  margin: 0px;
+}
+
+header {
+   background-color: #091133;
+   padding: 20px 0;
+}
+
+nav{ 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav img {
+  max-width: 150px;
+}
+
+.button{
+  border-radius: 3PX;
+  padding: 5px 30px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.button.white{
+  background-color: #fff;
+  color: #091133;
+  border: 1px solid #091133;
+}
+
+.button.blue{
+  background-color: #091133;
+  color: #fff;
+}
+
+nav ul, footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0px;
+}
+
+nav ul li, footer ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container{
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0px 10px;
+}
+
+.principal{
+    background-image: url('../img/fundo.png');
+    background-position: top right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 900px;
+    display: flex;
+    align-items: center;
+}
+
+.content{
+  width: 50%;
+  padding: 0 30px;
+}
+
+.content .buttons{
+  margin-top: 30px;
+}
+
+.content h3{
+  font-size: 50px;
+  color: #091133;
+  font-weight: normal;
+}
+
+.content h5{
+  font-size: 30px;
+  color: #091133;
+  font-weight: normal;
+}
+
+.content .texto{
+  font-size: 18px;
+  text-align: justify;
+}
+
+.secundary{
+  margin: 100px 0px;
+}
+
+.secundary .container{
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  background-color: #E7ECFF;
+  padding: 40px 0;
+}
+
+footer div.container{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links{
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid #CDD1D4;
+}
+
+footer ul li a{
+  color: #929ECC;
+  text-decoration: none;
+}
