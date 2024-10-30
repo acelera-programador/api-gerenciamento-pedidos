@@ -2,9 +2,7 @@
 .settings/
 .project
 .classpath
-.idea/
 out/
-multt.iml
 
 # build files
 target/
@@ -13,15 +11,8 @@ bin/
 .DS_Store
 build/
 .idea/
-multt.iml
+*.iml
 
-WebContent/arquivos
-WebContent/documentos
-/target\generated-sources\annotations/
-WebContent/css/compactado/*
-WebContent/js/compactado/*
-src/desenvolvimento/hibernate.cfg.xml
-src/desenvolvimento.properties
 
 
 
