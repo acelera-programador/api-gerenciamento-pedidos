@@ -19,6 +19,8 @@ public class ClienteService {
 
         clienteRepository.save(cliente);
 
-        return ClienteAdapter.toClienteResponse(cliente);
+        ClienteResponse clienteResponse = ClienteAdapter.toClienteResponse(cliente);
+
+        return clienteResponse;
     }
 }
