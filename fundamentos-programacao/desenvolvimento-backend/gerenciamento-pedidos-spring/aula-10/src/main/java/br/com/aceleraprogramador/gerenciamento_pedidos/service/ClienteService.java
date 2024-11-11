@@ -2,14 +2,16 @@ package br.com.aceleraprogramador.gerenciamento_pedidos.service;
 import br.com.aceleraprogramador.gerenciamento_pedidos.adapter.ClienteAdapter;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.request.CreateClienteRequest;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.ClienteResponse;
+import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.PageResponse;
 import br.com.aceleraprogramador.gerenciamento_pedidos.exceptions.RecursoNaoEncontradoException;
 import br.com.aceleraprogramador.gerenciamento_pedidos.model.Cliente;
 import br.com.aceleraprogramador.gerenciamento_pedidos.repository.ClienteRepository;
 import br.com.aceleraprogramador.gerenciamento_pedidos.utils.ObjectMapperUtilsConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,17 +37,26 @@ public class ClienteService {
         return clienteResponse;
     }
 
-    public List<ClienteResponse> buscarTodosOsClientes() {
+    public PageResponse<ClienteResponse> buscarTodosOsClientes(Pageable pageable) {
 
         log.info("Buscando todos os clientes...");
 
-        List<Cliente> clientes = clienteRepository.findAll();
+        Page<Cliente> clientes = clienteRepository.findAll(pageable);
 
-        List<ClienteResponse> clientesResponse = ClienteAdapter.toClientesResponseList(clientes);
+        Page<ClienteResponse> clienteResponsePage = clientes.map(ClienteAdapter::toClienteResponse);
+
+        PageResponse<ClienteResponse> pageResponse = PageResponse.
+                <ClienteResponse>builder()
+                .content(clienteResponsePage.getContent())
+                .currentPage(clienteResponsePage.getNumber())
+                .pageSize(clienteResponsePage.getSize())
+                .totalElements(clienteResponsePage.getTotalElements())
+                .totalPages(clienteResponsePage.getTotalPages())
+                .build();
 
         log.info("Clientes retornados com sucesso.");
 
-        return clientesResponse;
+        return pageResponse;
     }
 
     public ClienteResponse buscarClientePorId(Long idCliente) {
