@@ -63,15 +63,10 @@ public class ClienteService {
     }
 
     public ClienteResponse buscarClientePorId(Long idCliente) {
-
         log.info("Buscando cliente com ID:{}", idCliente);
-
         Cliente clienteExistente = buscarEntidadeClientePorId(idCliente);
-
         ClienteResponse clienteResponse = ClienteAdapter.toClienteResponse(clienteExistente);
-
         log.info("Cliente retornado com sucesso.");
-
         return clienteResponse;
     }
 
