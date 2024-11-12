@@ -9,6 +9,25 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Table(name = "cliente")
+@NamedNativeQuery(
+        name = "Cliente.findClienteResponseByProfissaoNative",
+        query = "SELECT id, nome, email, telefone, endereco, profissao FROM cliente WHERE profissao = :profissao",
+        resultSetMapping = "ClienteResponseMapping"
+)
+@SqlResultSetMapping(
+        name = "ClienteResponseMapping",
+        classes = @ConstructorResult(
+                targetClass = br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.ClienteResponse.class,
+                columns = {
+                        @ColumnResult(name = "id", type = Long.class),
+                        @ColumnResult(name = "nome", type = String.class),
+                        @ColumnResult(name = "email", type = String.class),
+                        @ColumnResult(name = "telefone", type = String.class),
+                        @ColumnResult(name = "endereco", type = String.class),
+                        @ColumnResult(name = "profissao", type = String.class)
+                }
+        )
+)
 public class Cliente {
 
     @Id

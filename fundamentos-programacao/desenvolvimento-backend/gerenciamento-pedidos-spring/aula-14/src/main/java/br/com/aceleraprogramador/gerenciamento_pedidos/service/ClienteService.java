@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -74,26 +75,47 @@ public class ClienteService {
         return clienteResponse;
     }
 
-    public ClienteResponse atualizarTodosOsDadosDoCliente(Long idCliente, UpdateClienteRequest request) {
+    public List<ClienteResponse> buscarClientePorNome(String nome) {
+        log.info("Buscando cliente com nome:{}", nome);
+        List<Cliente> clientesPorNome = clienteRepository.findByNomeContaining(nome);
+        List<ClienteResponse> clientesResponse = ClienteAdapter.toClientesResponseList(clientesPorNome);
+        log.info("Cliente por nome retornados com sucesso.");
+        return clientesResponse;
+    }
+
+    public List<ClienteResponse> buscarClientePorEmail(String email) {
+        log.info("Buscando cliente com email:{}", email);
+        List<Cliente> clientesPorEmail = clienteRepository.findByEmailNative(email);
+        List<ClienteResponse> clientesResponse = ClienteAdapter.toClientesResponseList(clientesPorEmail);
+        log.info("Cliente por email retornados com sucesso.");
+        return clientesResponse;
+    }
+
+    public List<ClienteResponse> buscarClientePorProfissao(String profissao) {
+        log.info("Buscando cliente com profissao:{}", profissao);
+        List<ClienteResponse> clientesResponsePorProfissao = clienteRepository.findClienteResponseByProfissaoNative(profissao);
+        log.info("Cliente por profissao retornados com sucesso.");
+        return clientesResponsePorProfissao;
+    }
+
+    public List<ClienteResponse> buscarClientePorNomeEmailProfissao(String nome, String email, String profissao) {
+        log.info("Buscando cliente por nome = " + nome, " email = " + email + " profissao = " + profissao);
+        List<Cliente> clientes = clienteRepository.findByNomeEmailProfissao(nome, email, profissao);
+        List<ClienteResponse> clientesResponse = ClienteAdapter.toClientesResponseList(clientes);
+        log.info("Cliente  retornados com sucesso.");
+        return clientesResponse;
+    }
+
+    public void atualizarTodosOsDadosDoCliente(Long idCliente, UpdateClienteRequest request) {
 
         log.info("Atualizando todos os dados do cliente com ID: {}", idCliente);
         log.info("JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(request));
 
         Cliente clienteExistente = buscarEntidadeClientePorId(idCliente);
 
-        clienteExistente.setNome(request.getNome());
-        clienteExistente.setEmail(request.getEmail());
-        clienteExistente.setTelefone(request.getTelefone());
-        clienteExistente.setEndereco(request.getEndereco());
-        clienteExistente.setProfissao(request.getProfissao());
-
-        clienteRepository.save(clienteExistente);
-
-        ClienteResponse clienteResponse = ClienteAdapter.toClienteResponse(clienteExistente);
+        clienteRepository.updateClienteById(clienteExistente.getId(), request.getNome(), request.getEmail(), request.getTelefone(), request.getEndereco(), request.getProfissao());
 
         log.info("Cliente totalmente atualizado com sucesso.");
-
-        return clienteResponse;
     }
 
     public ClienteResponse atualizarParcialmenteOsDadosDoCliente(Long idCliente, UpdateClienteRequest request) {

@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
+import java.util.List;
 
 public interface ClienteAPI {
 
@@ -27,15 +28,35 @@ public interface ClienteAPI {
     })
     ClienteResponse criarCliente(@Valid @RequestBody CreateClienteRequest request);
 
-    @Operation(summary = "Listar todos os cliente")
+    @Operation(summary = "Buscar todos os cliente")
     @ApiResponse(responseCode = "200", description = "Clientes Retornados com sucesso.",
             content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, array = @ArraySchema(schema = @Schema(implementation = PageResponse.class))))
     PageResponse<ClienteResponse> buscarTodosOsClientes(Pageable pageable);
 
-    @Operation(summary = "Listar cliente por ID")
+    @Operation(summary = "Buscar cliente por ID")
     @ApiResponse(responseCode = "200", description = "Cliente Retornado com sucesso.",
             content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ClienteResponse.class)))
     ClienteResponse buscarClientePorId(@Parameter(description = "Id do cliente", required = true) Long idCliente);
+
+    @Operation(summary = "Buscar clientes por nome")
+    @ApiResponse(responseCode = "200", description = "Clientes Retornado com sucesso.",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ClienteResponse.class)))
+    List<ClienteResponse> buscarClientesPorNome(String nome);
+
+    @Operation(summary = "Buscar clientes por email")
+    @ApiResponse(responseCode = "200", description = "Clientes Retornado com sucesso.",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ClienteResponse.class)))
+    List<ClienteResponse> buscarClientesPorEmail(String email);
+
+    @Operation(summary = "Buscar clientes por profissao")
+    @ApiResponse(responseCode = "200", description = "Clientes Retornado com sucesso.",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ClienteResponse.class)))
+    List<ClienteResponse> buscarClientesPorProfissao(String profissao);
+
+    @Operation(summary = "Buscar clientes por nome, email ou  profissao")
+    @ApiResponse(responseCode = "200", description = "Clientes Retornado com sucesso.",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ClienteResponse.class)))
+    List<ClienteResponse> buscarClientePorNomeEmailProfissao(String nome, String email, String profissao);
 
     @Operation(summary = "Atualizar todos os dados do cliente")
     @ApiResponses({
@@ -43,7 +64,7 @@ public interface ClienteAPI {
                     content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ClienteResponse.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request - Requisição inválida", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErroResponse.class)))
     })
-    ClienteResponse atualizarTodosOsDadosDoCliente(@Parameter(description = "Id do cliente", required = true) Long idCliente, @Valid @RequestBody UpdateClienteRequest request);
+    void atualizarTodosOsDadosDoCliente(@Parameter(description = "Id do cliente", required = true) Long idCliente, @Valid @RequestBody UpdateClienteRequest request);
 
     @Operation(summary = "Atualizar parcialmente os dados do cliente")
     @ApiResponses({
