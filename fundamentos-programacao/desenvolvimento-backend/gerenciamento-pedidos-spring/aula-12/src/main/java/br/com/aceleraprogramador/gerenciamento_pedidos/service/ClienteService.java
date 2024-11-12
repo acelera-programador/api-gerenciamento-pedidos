@@ -72,7 +72,6 @@ public class ClienteService {
         log.info("Cliente retornado com sucesso.");
 
         return clienteResponse;
-
     }
 
     public ClienteResponse atualizarTodosOsDadosDoCliente(Long idCliente, UpdateClienteRequest request) {
@@ -133,6 +132,16 @@ public class ClienteService {
         return clienteResponse;
     }
 
+    public void removerCliente(Long idCliente) {
+
+        log.info("Removendo do cliente com ID: {}", idCliente);
+
+        Cliente clienteExistente = buscarEntidadeClientePorId(idCliente);
+
+        clienteRepository.delete(clienteExistente);
+
+        log.info("Cliente removido com sucesso.");
+    }
 
     private Cliente buscarEntidadeClientePorId(Long idCliente) {
         Optional<Cliente> clienteOptional = clienteRepository.findById(idCliente);

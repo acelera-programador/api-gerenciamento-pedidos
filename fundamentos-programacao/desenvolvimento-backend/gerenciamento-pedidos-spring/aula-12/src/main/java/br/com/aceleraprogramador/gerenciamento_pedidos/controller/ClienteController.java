@@ -51,4 +51,11 @@ public class ClienteController implements ClienteAPI {
     public ClienteResponse atualizarParcialmenteOsDadosDoCliente(@PathVariable Long idCliente, UpdateClienteRequest request) {
         return clienteService.atualizarParcialmenteOsDadosDoCliente(idCliente, request);
     }
+
+    @Override
+    @DeleteMapping(value = "/v1/{idCliente}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removerCliente(@PathVariable Long idCliente) {
+        clienteService.removerCliente(idCliente);
+    }
 }

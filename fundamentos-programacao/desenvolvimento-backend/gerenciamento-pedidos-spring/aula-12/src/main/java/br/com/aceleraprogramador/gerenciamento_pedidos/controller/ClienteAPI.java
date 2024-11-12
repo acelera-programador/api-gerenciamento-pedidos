@@ -52,4 +52,8 @@ public interface ClienteAPI {
             @ApiResponse(responseCode = "400", description = "Bad Request - Requisição inválida", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErroResponse.class)))
     })
     ClienteResponse atualizarParcialmenteOsDadosDoCliente(@Parameter(description = "Id do cliente", required = true) Long idCliente, @Valid @RequestBody UpdateClienteRequest request);
+
+    @Operation(summary = "Remover cliente por ID")
+    @ApiResponse(responseCode = "204", description = "Cliente removido com sucesso.")
+    void removerCliente(@Parameter(description = "Id do cliente", required = true) Long idCliente);
 }
