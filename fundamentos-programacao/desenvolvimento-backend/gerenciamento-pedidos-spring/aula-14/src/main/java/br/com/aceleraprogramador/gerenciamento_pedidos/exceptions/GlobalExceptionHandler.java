@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
                 .path(request.getDescription(false))
                 .build();
 
-        log.error(ex.getMessage());
+        log.error(ex.getMessage(), ex);
 
         return new ResponseEntity<>(erroResponse, HttpStatus.NOT_FOUND);
     }
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
                 .path(request.getDescription(false))
                 .build();
 
-        log.error(ex.getMessage());
+        log.error(ex.getMessage(), ex);
 
         return new ResponseEntity<>(erroResponse, HttpStatus.BAD_REQUEST);
     }
@@ -78,7 +78,7 @@ public class GlobalExceptionHandler {
                 .path(request.getDescription(false))
                 .build();
 
-        log.error(ex.getMessage());
+        log.error(ex.getMessage(), ex);
 
         return new ResponseEntity<>(erroResponse, HttpStatus.BAD_REQUEST);
     }
@@ -94,7 +94,7 @@ public class GlobalExceptionHandler {
                 .path(request.getDescription(false))
                 .build();
 
-        log.error(ex.getMessage());
+        log.error(ex.getMessage(), ex);
 
         return new ResponseEntity<>(erroResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }

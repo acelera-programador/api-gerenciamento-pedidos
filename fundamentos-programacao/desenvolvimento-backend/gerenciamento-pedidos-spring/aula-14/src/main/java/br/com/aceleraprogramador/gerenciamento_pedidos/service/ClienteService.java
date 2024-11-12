@@ -154,7 +154,6 @@ public class ClienteService {
         Optional<Cliente> clienteOptional = clienteRepository.findById(idCliente);
         if (clienteOptional.isEmpty()) {
             String erro = "Cliente não encontrado com o ID: " + idCliente;
-            log.error(erro);
             throw new RecursoNaoEncontradoException(erro);
         } else {
             return clienteOptional.get();
