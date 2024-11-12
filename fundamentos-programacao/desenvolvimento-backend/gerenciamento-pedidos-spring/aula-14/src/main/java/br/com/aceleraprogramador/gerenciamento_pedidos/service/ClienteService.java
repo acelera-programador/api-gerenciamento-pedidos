@@ -30,9 +30,7 @@ public class ClienteService {
         log.info("JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(createClienteRequest));
 
         Cliente cliente = ClienteAdapter.toCliente(createClienteRequest);
-
         clienteRepository.save(cliente);
-
         ClienteResponse clienteResponse = ClienteAdapter.toClienteResponse(cliente);
 
         log.info("Cliente criado com sucesso...");
@@ -45,9 +43,7 @@ public class ClienteService {
         log.info("Buscando todos os clientes...");
 
         Page<Cliente> clientes = clienteRepository.findAll(pageable);
-
         Page<ClienteResponse> clienteResponsePage = clientes.map(ClienteAdapter::toClienteResponse);
-
         PageResponse<ClienteResponse> pageResponse = PageResponse.
                 <ClienteResponse>builder()
                 .content(clienteResponsePage.getContent())
@@ -107,7 +103,6 @@ public class ClienteService {
         log.info("JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(request));
 
         Cliente clienteExistente = buscarEntidadeClientePorId(idCliente);
-
         clienteRepository.updateClienteById(clienteExistente.getId(), request.getNome(), request.getEmail(), request.getTelefone(), request.getEndereco(), request.getProfissao());
 
         log.info("Cliente totalmente atualizado com sucesso.");
@@ -141,7 +136,6 @@ public class ClienteService {
         }
 
         clienteRepository.save(clienteExistente);
-
         ClienteResponse clienteResponse = ClienteAdapter.toClienteResponse(clienteExistente);
 
         log.info("Cliente parcialmente atualizado com sucesso.");
@@ -150,13 +144,9 @@ public class ClienteService {
     }
 
     public void removerCliente(Long idCliente) {
-
         log.info("Removendo do cliente com ID: {}", idCliente);
-
         Cliente clienteExistente = buscarEntidadeClientePorId(idCliente);
-
         clienteRepository.delete(clienteExistente);
-
         log.info("Cliente removido com sucesso.");
     }
 
