@@ -3,10 +3,10 @@ import br.com.aceleraprogramador.gerenciamento_pedidos.exceptions.FalhaAoConvert
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@UtilityClass
 @Slf4j
 public class ObjectMapperUtilsConfig {
 
