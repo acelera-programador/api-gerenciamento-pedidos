@@ -4,6 +4,7 @@ import br.com.aceleraprogramador.gerenciamento_pedidos.dto.request.UpdateCliente
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.ClienteResponse;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.PageResponse;
 import br.com.aceleraprogramador.gerenciamento_pedidos.service.ClienteService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@Tag(name = "Gerenciamento de Clientes")
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController implements ClienteAPI {
