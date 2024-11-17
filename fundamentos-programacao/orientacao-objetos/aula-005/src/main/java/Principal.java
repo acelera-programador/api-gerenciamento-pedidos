@@ -11,8 +11,5 @@ public class Principal {
 
         System.out.println(produto.getNome());
         System.out.println(produto2.getNome());
-
-
     }
-
 }
