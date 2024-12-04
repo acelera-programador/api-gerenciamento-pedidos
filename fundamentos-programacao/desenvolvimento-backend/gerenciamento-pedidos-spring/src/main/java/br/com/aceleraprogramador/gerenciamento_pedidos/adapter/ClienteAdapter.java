@@ -20,22 +20,22 @@ public class ClienteAdapter {
                 .build();
     }
 
-    public static ClienteResponse toClienteResponse(Cliente cliente) {
+    public static ClienteResponse toResponse(Cliente entidade) {
         return ClienteResponse
                 .builder()
-                .id(cliente.getId())
-                .nome(cliente.getNome())
-                .email(cliente.getEmail())
-                .endereco(cliente.getEndereco())
-                .telefone(cliente.getTelefone())
-                .profissao(cliente.getProfissao())
+                .id(entidade.getId())
+                .nome(entidade.getNome())
+                .email(entidade.getEmail())
+                .endereco(entidade.getEndereco())
+                .telefone(entidade.getTelefone())
+                .profissao(entidade.getProfissao())
                 .build();
     }
 
-    public static List<ClienteResponse> toClientesResponseList(List<Cliente> clientes) {
-        return clientes
+    public static List<ClienteResponse> toResponseList(List<Cliente> entidades) {
+        return entidades
                 .stream()
-                .map(ClienteAdapter::toClienteResponse)
+                .map(ClienteAdapter::toResponse)
                 .collect(Collectors.toList());
     }
 }

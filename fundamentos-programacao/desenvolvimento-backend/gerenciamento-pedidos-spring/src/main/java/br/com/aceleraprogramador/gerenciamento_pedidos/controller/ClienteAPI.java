@@ -31,7 +31,11 @@ public interface ClienteAPI {
     @Operation(summary = "Buscar todos os cliente")
     @ApiResponse(responseCode = "200", description = "Clientes Retornados com sucesso.",
             content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, array = @ArraySchema(schema = @Schema(implementation = PageResponse.class))))
-    PageResponse<ClienteResponse> buscarTodosOsClientes(Pageable pageable);
+    PageResponse<ClienteResponse> buscarTodosOsClientes(@Parameter(description = "Número da página (padrão: 0)", schema = @Schema(type = "integer", defaultValue = "0")) Integer pageNumber,
+                                                        @Parameter(description = "Tamanho da página (padrão: 10)", schema = @Schema(type = "integer", defaultValue = "10")) Integer pageSize,
+                                                        @Parameter(description = "Campo a ser ordenado (padrão: id)", schema = @Schema(type = "string", defaultValue = "id")) String sortBy,
+                                                        @Parameter(description = "Direção da ordenação (padrão: ASC)", schema = @Schema(type = "string", defaultValue = "ASC")) String sortDirection);
+
 
     @Operation(summary = "Buscar cliente por ID")
     @ApiResponse(responseCode = "200", description = "Cliente Retornado com sucesso.",

@@ -30,8 +30,11 @@ public class ClienteController implements ClienteAPI {
     @Override
     @GetMapping(value = "/v1", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public PageResponse<ClienteResponse> buscarTodosOsClientes(Pageable pageable) {
-        return clienteService.buscarTodosOsClientes(pageable);
+    public PageResponse<ClienteResponse> buscarTodosOsClientes(@RequestParam(required = false) Integer pageNumber,
+                                                               @RequestParam(required = false) Integer pageSize,
+                                                               @RequestParam(required = false) String sortBy,
+                                                               @RequestParam(required = false) String sortDirection) {
+        return clienteService.buscarTodosOsClientes(pageNumber,pageSize, sortBy, sortDirection);
     }
 
     @Override
