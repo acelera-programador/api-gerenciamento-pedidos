@@ -25,12 +25,12 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepository;
 
-    public ClienteResponse criarCliente(CreateClienteRequest createClienteRequest) {
+    public ClienteResponse criarCliente(CreateClienteRequest request) {
 
         log.info("Criando um novo cliente...");
-        log.info("JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(createClienteRequest));
+        log.info("JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(request));
 
-        Cliente cliente = ClienteAdapter.toCliente(createClienteRequest);
+        Cliente cliente = ClienteAdapter.toEntity(request);
         clienteRepository.save(cliente);
         ClienteResponse clienteResponse = ClienteAdapter.toResponse(cliente);
 
@@ -93,9 +93,9 @@ public class ClienteService {
         return pageResponse;
     }
 
-    public ClienteResponse buscarClientePorId(Long idCliente) {
-        log.info("Buscando cliente com ID:{}", idCliente);
-        Cliente clienteExistente = buscarEntidadeClientePorId(idCliente);
+    public ClienteResponse buscarClientePorId(Long id) {
+        log.info("Buscando cliente com ID:{}", id);
+        Cliente clienteExistente = buscarEntidadeClientePorId(id);
         ClienteResponse clienteResponse = ClienteAdapter.toResponse(clienteExistente);
         log.info("Cliente retornado com sucesso.");
         return clienteResponse;

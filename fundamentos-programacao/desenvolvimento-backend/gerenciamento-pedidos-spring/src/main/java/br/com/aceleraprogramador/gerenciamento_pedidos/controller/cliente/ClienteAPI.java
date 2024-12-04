@@ -1,4 +1,4 @@
-package br.com.aceleraprogramador.gerenciamento_pedidos.controller;
+package br.com.aceleraprogramador.gerenciamento_pedidos.controller.cliente;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.request.CreateClienteRequest;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.request.UpdateClienteRequest;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.ClienteResponse;
@@ -46,7 +46,6 @@ public interface ClienteAPI {
                                                                      @Parameter(description = "Tamanho da página (padrão: 10)", schema = @Schema(type = "integer", defaultValue = "10")) Integer pageSize,
                                                                      @Parameter(description = "Campo a ser ordenado (padrão: id)", schema = @Schema(type = "string", defaultValue = "id")) String sortBy,
                                                                      @Parameter(description = "Direção da ordenação (padrão: ASC)", schema = @Schema(type = "string", defaultValue = "ASC")) String sortDirection);
-
 
     @Operation(summary = "Buscar cliente por ID")
     @ApiResponse(responseCode = "200", description = "Cliente Retornado com sucesso.",

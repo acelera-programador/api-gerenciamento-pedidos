@@ -9,7 +9,7 @@ import java.util.List;
 @UtilityClass
 public class UsuarioAdapter {
 
-    public static Usuario criarUsuarioComVariasRoles(String nome, String senha, String email, RoleType roleType) {
+    public static Usuario criarPerfilDeUsuario(String nome, String senha, String email, RoleType roleType) {
         return Usuario
                 .builder()
                 .nome(nome)
@@ -22,7 +22,7 @@ public class UsuarioAdapter {
                 .build();
     }
 
-    public static Usuario criarUsuarioComVariasRoles(String nome, String senha, String email, List<RoleType> roleTypes) {
+    public static Usuario criarPerfilDeUsuario(String nome, String senha, String email, List<RoleType> roleTypes) {
         return Usuario
                 .builder()
                 .nome(nome)

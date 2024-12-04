@@ -20,9 +20,9 @@ public class InicializarUsuarios implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Usuario usuario = UsuarioAdapter.criarUsuarioComVariasRoles("Usuario", passwordEncoder.encode("password"), "usuario@usuario.com", RoleType.ROLE_USUARIO);
-        Usuario gerente = UsuarioAdapter.criarUsuarioComVariasRoles("Gerente", passwordEncoder.encode("password"), "gerente@gerente.com", RoleType.ROLE_GERENTE);
-        Usuario administrador = UsuarioAdapter.criarUsuarioComVariasRoles("Administrador", passwordEncoder.encode("password"), "administrador@administrador.com", RoleType.ROLE_ADMINISTRADOR);
+        Usuario usuario = UsuarioAdapter.criarPerfilDeUsuario("Usuario", passwordEncoder.encode("password"), "usuario@usuario.com", RoleType.ROLE_USUARIO);
+        Usuario gerente = UsuarioAdapter.criarPerfilDeUsuario("Gerente", passwordEncoder.encode("password"), "gerente@gerente.com", RoleType.ROLE_GERENTE);
+        Usuario administrador = UsuarioAdapter.criarPerfilDeUsuario("Administrador", passwordEncoder.encode("password"), "administrador@administrador.com", RoleType.ROLE_ADMINISTRADOR);
         usuarioRepository.saveAll(List.of(usuario, gerente, administrador));
     }
 }
