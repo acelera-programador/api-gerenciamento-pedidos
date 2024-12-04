@@ -9,9 +9,9 @@ import br.com.aceleraprogramador.gerenciamento_pedidos.model.Cliente;
 import br.com.aceleraprogramador.gerenciamento_pedidos.repository.ClienteRepository;
 import br.com.aceleraprogramador.gerenciamento_pedidos.utils.ObjectMapperUtilsConfig;
 import br.com.aceleraprogramador.gerenciamento_pedidos.utils.PaginacaoUtils;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,10 +20,10 @@ import java.util.Optional;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ClienteService {
 
-    @Autowired
-    ClienteRepository clienteRepository;
+    private final ClienteRepository clienteRepository;
 
     public ClienteResponse criarCliente(CreateClienteRequest createClienteRequest) {
 

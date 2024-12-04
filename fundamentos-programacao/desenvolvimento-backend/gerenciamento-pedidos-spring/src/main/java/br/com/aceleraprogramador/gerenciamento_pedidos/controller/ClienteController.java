@@ -6,7 +6,7 @@ import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.PageResponse
 import br.com.aceleraprogramador.gerenciamento_pedidos.service.ClienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +15,10 @@ import java.util.List;
 @Tag(name = "Gerenciamento de Clientes")
 @RestController
 @RequestMapping("/api/clientes")
+@RequiredArgsConstructor
 public class ClienteController implements ClienteAPI {
 
-    @Autowired
-    ClienteService clienteService;
+    private final ClienteService clienteService;
 
     @Override
     @PostMapping(value = "/v1", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
