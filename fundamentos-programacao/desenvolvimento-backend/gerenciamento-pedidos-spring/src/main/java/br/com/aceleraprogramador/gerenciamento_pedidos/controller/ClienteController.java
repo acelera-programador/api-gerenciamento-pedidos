@@ -5,8 +5,8 @@ import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.ClienteRespo
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.PageResponse;
 import br.com.aceleraprogramador.gerenciamento_pedidos.service.ClienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public class ClienteController implements ClienteAPI {
     @Override
     @PostMapping(value = "/v1", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteResponse criarCliente(CreateClienteRequest request) {
+    public ClienteResponse criarCliente(@Valid @RequestBody CreateClienteRequest request) {
         return clienteService.criarCliente(request);
     }
 
@@ -34,7 +34,23 @@ public class ClienteController implements ClienteAPI {
                                                                @RequestParam(required = false) Integer pageSize,
                                                                @RequestParam(required = false) String sortBy,
                                                                @RequestParam(required = false) String sortDirection) {
-        return clienteService.buscarTodosOsClientes(pageNumber,pageSize, sortBy, sortDirection);
+        return clienteService.buscarTodosOsClientes(pageNumber, pageSize, sortBy, sortDirection);
+    }
+
+    @Override
+    @GetMapping(value = "/v1/buscarTodosOsClientesPorParametros", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public PageResponse<ClienteResponse> buscarTodosOsClientesPorParametros(@RequestParam(required = false) Long id,
+                                                                            @RequestParam(required = false) String nome,
+                                                                            @RequestParam(required = false) String email,
+                                                                            @RequestParam(required = false) String telefone,
+                                                                            @RequestParam(required = false) String endereco,
+                                                                            @RequestParam(required = false) String profissao,
+                                                                            @RequestParam(required = false) Integer pageNumber,
+                                                                            @RequestParam(required = false) Integer pageSize,
+                                                                            @RequestParam(required = false) String sortBy,
+                                                                            @RequestParam(required = false) String sortDirection) {
+        return clienteService.buscarTodosOsClientesPorParametros(id, nome, email, telefone, endereco, profissao, pageNumber, pageSize, sortBy, sortDirection);
     }
 
     @Override
@@ -81,14 +97,14 @@ public class ClienteController implements ClienteAPI {
     @Override
     @PutMapping(value = "/v1/{idCliente}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizarTodosOsDadosDoCliente(@PathVariable Long idCliente, UpdateClienteRequest request) {
+    public void atualizarTodosOsDadosDoCliente(@PathVariable Long idCliente, @Valid @RequestBody UpdateClienteRequest request) {
         clienteService.atualizarTodosOsDadosDoCliente(idCliente, request);
     }
 
     @Override
     @PatchMapping(value = "/v1/{idCliente}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ClienteResponse atualizarParcialmenteOsDadosDoCliente(@PathVariable Long idCliente, UpdateClienteRequest request) {
+    public ClienteResponse atualizarParcialmenteOsDadosDoCliente(@PathVariable Long idCliente, @Valid @RequestBody UpdateClienteRequest request) {
         return clienteService.atualizarParcialmenteOsDadosDoCliente(idCliente, request);
     }
 

@@ -62,6 +62,37 @@ public class ClienteService {
         return pageResponse;
     }
 
+    public PageResponse<ClienteResponse> buscarTodosOsClientesPorParametros(Long id,
+                                                                            String nome,
+                                                                            String email,
+                                                                            String telefone,
+                                                                            String endereco,
+                                                                            String profissao,
+                                                                            Integer pageNumber,
+                                                                            Integer pageSize,
+                                                                            String sortBy,
+                                                                            String sortDirection) {
+        log.info("Buscando todos os clientes de forma parametrizado...");
+
+        Pageable pageable = PaginacaoUtils.criarPageable(pageNumber, pageSize, sortBy, sortDirection);
+
+        Page<Cliente> clientes = clienteRepository.buscarClientesParametrizado(id, nome, email, telefone, endereco, profissao, pageable);
+
+        Page<ClienteResponse> clienteResponsePage = clientes.map(ClienteAdapter::toResponse);
+        PageResponse<ClienteResponse> pageResponse = PageResponse.
+                <ClienteResponse>builder()
+                .content(clienteResponsePage.getContent())
+                .currentPage(clienteResponsePage.getNumber())
+                .pageSize(clienteResponsePage.getSize())
+                .totalElements(clienteResponsePage.getTotalElements())
+                .totalPages(clienteResponsePage.getTotalPages())
+                .build();
+
+        log.info("Clientes retornados com sucesso.");
+
+        return pageResponse;
+    }
+
     public ClienteResponse buscarClientePorId(Long idCliente) {
         log.info("Buscando cliente com ID:{}", idCliente);
         Cliente clienteExistente = buscarEntidadeClientePorId(idCliente);
