@@ -11,13 +11,12 @@ import java.util.stream.Collectors;
 public class ProdutoAdapter {
 
     public static Produto toEntity(ProdutoRequest request) {
-        Fornecedor build = Fornecedor.builder().id(request.getIdFornecedor()).build();
         return Produto
                 .builder()
                 .nome(request.getNome())
                 .descricao(request.getDescricao())
                 .preco(request.getPreco())
-                .fornecedor(build)
+                .fornecedor(Fornecedor.builder().id(request.getIdFornecedor()).build())
                 .build();
     }
 
