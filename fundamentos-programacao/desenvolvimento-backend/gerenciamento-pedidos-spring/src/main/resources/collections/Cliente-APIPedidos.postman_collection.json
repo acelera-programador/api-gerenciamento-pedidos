@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "62051164-5634-4467-8caf-263c018950be",
-		"name": "CRUD Clientes",
+		"name": "Cliente - API Pedidos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "39680100"
 	},
@@ -14,12 +14,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -27,7 +27,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/clientes/v1",
+					"raw": "http://localhost:8080/api/clientes/v1?pageNumber=0&pageSize=10&sortBy=id&sortDirection=ASC",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -37,6 +37,103 @@
 						"api",
 						"clientes",
 						"v1"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						},
+						{
+							"key": "sortDirection",
+							"value": "ASC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscarTodosOsClientesPorParametros",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "gerente@gerente.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/v1/buscarTodosOsClientesPorParametros?id=1&nome=Bruno&email=bruno.yara@exemplo.com&telefone=(55) 96791-3201&endereco=Rua Xavier&profissao=Jornalista&pageNumber=0&pageSize=10&sortBy=id&sortDirection=ASC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"v1",
+						"buscarTodosOsClientesPorParametros"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "nome",
+							"value": "Bruno"
+						},
+						{
+							"key": "email",
+							"value": "bruno.yara@exemplo.com"
+						},
+						{
+							"key": "telefone",
+							"value": "(55) 96791-3201"
+						},
+						{
+							"key": "endereco",
+							"value": "Rua Xavier"
+						},
+						{
+							"key": "profissao",
+							"value": "Jornalista"
+						},
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						},
+						{
+							"key": "sortDirection",
+							"value": "ASC"
+						}
 					]
 				}
 			},
@@ -50,12 +147,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -87,12 +184,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -100,7 +197,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/clientes/v1/buscarPorNome?nome=Wesley",
+					"raw": "http://localhost:8080/api/clientes/v1/buscarPorNome?nome=Bruno",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -115,7 +212,7 @@
 					"query": [
 						{
 							"key": "nome",
-							"value": "Wesley"
+							"value": "Bruno"
 						}
 					]
 				}
@@ -130,12 +227,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -143,7 +240,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/clientes/v1/buscarPorEmail?email=wesleyeduardo.dev@gmail.com",
+					"raw": "http://localhost:8080/api/clientes/v1/buscarPorEmail?email=bruno.yara@exemplo.com",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -158,7 +255,7 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "wesleyeduardo.dev@gmail.com"
+							"value": "bruno.yara@exemplo.com"
 						}
 					]
 				}
@@ -173,12 +270,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -186,7 +283,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/clientes/v1/buscarPorProfissao?profissao=Desenvolvedor",
+					"raw": "http://localhost:8080/api/clientes/v1/buscarPorProfissao?profissao=Jornalista",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -201,7 +298,7 @@
 					"query": [
 						{
 							"key": "profissao",
-							"value": "Desenvolvedor"
+							"value": "Jornalista"
 						}
 					]
 				}
@@ -216,12 +313,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -229,7 +326,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/clientes/v1/buscarPorNomeEmailProfissao?nome=Wesley",
+					"raw": "http://localhost:8080/api/clientes/v1/buscarPorNomeEmailProfissao?nome=Bruno&email=bruno.yara@exemplo.com&profissao=Jornalista",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -244,17 +341,15 @@
 					"query": [
 						{
 							"key": "nome",
-							"value": "Wesley"
+							"value": "Bruno"
 						},
 						{
 							"key": "email",
-							"value": "wesleyeduardo.dev%40gmail.com",
-							"disabled": true
+							"value": "bruno.yara@exemplo.com"
 						},
 						{
 							"key": "profissao",
-							"value": "Desenvolvedor",
-							"disabled": true
+							"value": "Jornalista"
 						}
 					]
 				}
@@ -269,12 +364,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -313,13 +408,13 @@
 					"type": "basic",
 					"basic": [
 						{
-							"key": "password",
-							"value": "admin",
+							"key": "username",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						},
 						{
-							"key": "username",
-							"value": "admin",
+							"key": "password",
+							"value": "password",
 							"type": "string"
 						}
 					]
@@ -360,12 +455,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "admin",
+							"value": "password",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "gerente@gerente.com",
 							"type": "string"
 						}
 					]
@@ -374,7 +469,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Wesley Eduardo de Oliveira Melo\",\r\n    \"email\": \"wesleyeduardo.dev@gmail.com\",\r\n    \"telefone\": \"(98) 98165-0805\"\r\n}",
+					"raw": "{\r\n    \"nome\": \"Wesley Eduardo de Oliveira Melo update\",\r\n    \"email\": \"wesleyeduardo.dev@gmail.com\",\r\n    \"telefone\": \"(98) 98165-0805\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -405,13 +500,13 @@
 					"type": "basic",
 					"basic": [
 						{
-							"key": "password",
-							"value": "admin",
+							"key": "username",
+							"value": "administrador@administrador.com",
 							"type": "string"
 						},
 						{
-							"key": "username",
-							"value": "admin",
+							"key": "password",
+							"value": "password",
 							"type": "string"
 						}
 					]
