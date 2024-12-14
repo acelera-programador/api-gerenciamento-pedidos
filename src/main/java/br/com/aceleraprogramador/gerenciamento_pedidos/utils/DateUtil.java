@@ -29,4 +29,12 @@ public class DateUtil {
         }
         return date.format(FORMATTER);
     }
+
+    public static String convertLocalDateToString(LocalDate localDate) {
+        if (localDate == null) {
+            throw new IllegalArgumentException("A data não pode ser nula.");
+        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return localDate.format(formatter);
+    }
 }

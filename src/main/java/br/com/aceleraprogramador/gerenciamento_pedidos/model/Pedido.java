@@ -25,6 +25,10 @@ public class Pedido {
     @Column(name = "data_pedido", nullable = false, length = 100)
     private LocalDateTime dataPedido;
 
+    @Column(name = "data_atualizacao", nullable = false, length = 100)
+    private LocalDateTime dataAtualizacao;
+
+    @Column(name = "status", nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
