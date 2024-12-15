@@ -1,7 +1,10 @@
 package br.com.aceleraprogramador.gerenciamento_pedidos.model;
+import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.ItemPedidoResponse;
 import br.com.aceleraprogramador.gerenciamento_pedidos.enuns.StatusPedido;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,4 +37,10 @@ public class Pedido {
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens;
+
+    public BigDecimal getValorTotal() {
+        return itens.stream()
+                .map(ItemPedido::getValorTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 }

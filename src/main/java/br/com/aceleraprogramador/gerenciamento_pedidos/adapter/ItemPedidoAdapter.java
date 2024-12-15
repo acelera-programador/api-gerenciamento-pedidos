@@ -22,13 +22,13 @@ public class ItemPedidoAdapter {
                 .build();
     }
 
-    public static ItemPedido toEntity(Pedido pedido, ItemPedidoRequest request) {
+    public static ItemPedido toEntity(Pedido entity, ItemPedidoRequest request) {
         return ItemPedido
                 .builder()
                 .produto(Produto.builder().id(request.getIdProduto()).build())
                 .quantidade(request.getQuantidade())
                 .precoUnitario(request.getPrecoUnitario())
-                .pedido(pedido)
+                .pedido(entity)
                 .build();
     }
 
@@ -50,7 +50,6 @@ public class ItemPedidoAdapter {
         return ItemPedidoResponse
                 .builder()
                 .id(entity.getId())
-                .idPedido(entity.getPedido().getId())
                 .idProduto(entity.getProduto().getId())
                 .quantidade(entity.getQuantidade())
                 .precoUnitario(entity.getPrecoUnitario())
