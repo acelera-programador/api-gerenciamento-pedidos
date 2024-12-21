@@ -1,5 +1,5 @@
 package br.com.aceleraprogramador.gerenciamento_pedidos.service;
-import br.com.aceleraprogramador.gerenciamento_pedidos.adapter.CobrancaClienteAdapter;
+import br.com.aceleraprogramador.gerenciamento_pedidos.adapter.CobrancaClientePedidoAdapter;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.CobrancaClienteResponse;
 import br.com.aceleraprogramador.gerenciamento_pedidos.enuns.TipoPagamento;
 import br.com.aceleraprogramador.gerenciamento_pedidos.exceptions.MulttDigitalInteracaoException;
@@ -62,7 +62,7 @@ public class RegistrarCobrancaClientePedidoService {
     }
 
     private CobrancaClienteResponse preencherCobrancaClienteResponse(MulttDigitalCobrancaResponse multtDigitalCobrancaResponse) {
-        return CobrancaClienteAdapter.preencherRespostaRegistroPagamento(
+        return CobrancaClientePedidoAdapter.preencherRespostaRegistroPagamento(
                 multtDigitalCobrancaResponse.getStatus(),
                 multtDigitalCobrancaResponse.getInvoiceUrl(),
                 multtDigitalCobrancaResponse.getPixCopiaECola(),

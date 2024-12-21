@@ -1,5 +1,4 @@
 package br.com.aceleraprogramador.gerenciamento_pedidos.security;
-import br.com.aceleraprogramador.gerenciamento_pedidos.service.UsuarioAutenticaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

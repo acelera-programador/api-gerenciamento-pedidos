@@ -1,7 +1,6 @@
-package br.com.aceleraprogramador.gerenciamento_pedidos.service;
+package br.com.aceleraprogramador.gerenciamento_pedidos.security;
 import br.com.aceleraprogramador.gerenciamento_pedidos.exceptions.RecursoNaoEncontradoException;
 import br.com.aceleraprogramador.gerenciamento_pedidos.repository.UsuarioRepository;
-import br.com.aceleraprogramador.gerenciamento_pedidos.security.UsuarioConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +16,7 @@ public class UsuarioAutenticaoService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return usuarioRepository.findByEmail(email)
-                .map(UsuarioConfig::new)
+                .map(UsuarioSecurityConfig::new)
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Email:" + email + " não enconstrado"));
     }
 }

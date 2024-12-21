@@ -3,7 +3,7 @@ import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.CobrancaClie
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class CobrancaClienteAdapter {
+public class CobrancaClientePedidoAdapter {
 
     public static CobrancaClienteResponse preencherRespostaRegistroPagamento(
             String status,
