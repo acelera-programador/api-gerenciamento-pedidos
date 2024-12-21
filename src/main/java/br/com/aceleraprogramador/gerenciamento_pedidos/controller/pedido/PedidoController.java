@@ -71,6 +71,6 @@ public class PedidoController implements PedidoAPI {
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAnyRole('ROLE_GERENTE','ROLE_ADMINISTRADOR','ROLE_USUARIO')")
     public CobrancaClienteResponse registrarCobrancaPedido(@PathVariable Long id) {
-        return pedidoService.registrarCobrancaPedido(id);
+        return pedidoService.registrarCobrancaClientePedido(id);
     }
 }

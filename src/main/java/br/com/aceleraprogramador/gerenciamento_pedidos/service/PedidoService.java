@@ -108,7 +108,7 @@ public class PedidoService {
         log.info("Pedido removido com sucesso.");
     }
 
-    public CobrancaClienteResponse registrarCobrancaPedido(Long id) {
+    public CobrancaClienteResponse registrarCobrancaClientePedido(Long id) {
         log.info("Registrando cobrança do pedido com ID: {}", id);
         Pedido pedido = buscarEntidadePedidoPorId(id);
         validarCobranca(pedido);
