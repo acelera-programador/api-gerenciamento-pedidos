@@ -2,7 +2,6 @@ package br.com.aceleraprogramador.gerenciamento_pedidos.adapter;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.CobrancaClienteResponse;
 import lombok.experimental.UtilityClass;
 
-
 @UtilityClass
 public class CobrancaClienteAdapter {
 

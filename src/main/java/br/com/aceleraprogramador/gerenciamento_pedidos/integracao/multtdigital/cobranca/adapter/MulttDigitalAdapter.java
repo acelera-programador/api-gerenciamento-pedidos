@@ -20,6 +20,15 @@ public class MulttDigitalAdapter {
                 .build();
     }
 
+    public static MulttDigitalCobrancaRequest preencherCobrancaRequest(BigDecimal valor, TipoPagamento tipoPagamento, LocalDate dataVencimento) {
+        return MulttDigitalCobrancaRequest
+                .builder()
+                .billingType(tipoPagamento.name())
+                .value(valor)
+                .dueDate(DateUtil.convertLocalDateToString(dataVencimento))
+                .build();
+    }
+
     public static MulttDigitalClienteRequest preencherClienteRequest(
             String externalReference,
             String name,

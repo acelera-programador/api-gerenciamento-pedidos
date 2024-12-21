@@ -21,8 +21,8 @@ public class MulttDigitalCobrancaAPI {
     public MulttDigitalCobrancaResponse registrarCobranca(MulttDigitalCobrancaRequest request) {
         try {
 
-            log.info("Criando cobrança no ambiente de integração de pagamentos...");
-            log.info("Request criarPagamento JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(request));
+            log.info("Resgistrando cobrança na API...");
+            log.info("Request registrarCobranca JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(request));
 
             String url = multtDigitalConfig.getBaseUrl() + "/cobrancas/v1";
             Map<String, String> headers = Map.of(
@@ -33,13 +33,13 @@ public class MulttDigitalCobrancaAPI {
 
             MulttDigitalCobrancaResponse responseBody = multtDigitalHelper.executeRequest(url, HttpMethod.POST, request, MulttDigitalCobrancaResponse.class, headers);
 
-            log.info("Cobrança registrado com sucesso no ambiente de integração de pagamentos.");
-            log.info("Response criarPagamento JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(responseBody));
+            log.info("Cobrança registrado com sucesso na API.");
+            log.info("Response registrarCobranca JSON: {}", ObjectMapperUtilsConfig.pojoParaJson(responseBody));
 
             return responseBody;
 
         } catch (Exception e) {
-            log.error("Erro ao criar cobrança no ambiente de pagamentos. {}", e.getMessage());
+            log.error("Erro ao registrar cobrança na API. {}", e.getMessage());
             throw new MulttDigitalInteracaoException(e.getMessage());
         }
     }

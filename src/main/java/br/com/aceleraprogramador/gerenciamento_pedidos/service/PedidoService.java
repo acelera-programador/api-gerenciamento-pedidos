@@ -31,7 +31,7 @@ public class PedidoService {
 
     private final PedidoRepository pedidoRepository;
     private final ItemPedidoRepository itemPedidoRepository;
-    private final RegistrarCobrancaClienteService registrarCobrancaClienteService;
+    private final RegistrarCobrancaClientePedidoService registrarCobrancaClientePedidoService;
 
     public PedidoResponse criarPedido(PedidoRequest request) {
 
@@ -112,7 +112,7 @@ public class PedidoService {
         log.info("Registrando cobrança do pedido com ID: {}", id);
         Pedido pedido = buscarEntidadePedidoPorId(id);
         validarCobranca(pedido);
-        CobrancaClienteResponse cobrancaClienteResponse = registrarCobrancaClienteService.registrarCobrancaPedido(pedido);
+        CobrancaClienteResponse cobrancaClienteResponse = registrarCobrancaClientePedidoService.registrarCobrancaClientePedido(pedido);
         atualizarStatusPedido(pedido);
         log.info("Registro de cobrança realizado com sucesso");
         return cobrancaClienteResponse;

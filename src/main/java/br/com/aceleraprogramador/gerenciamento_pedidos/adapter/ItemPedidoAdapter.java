@@ -1,12 +1,10 @@
 package br.com.aceleraprogramador.gerenciamento_pedidos.adapter;
-
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.request.ItemPedidoRequest;
 import br.com.aceleraprogramador.gerenciamento_pedidos.dto.response.ItemPedidoResponse;
 import br.com.aceleraprogramador.gerenciamento_pedidos.model.ItemPedido;
 import br.com.aceleraprogramador.gerenciamento_pedidos.model.Pedido;
 import br.com.aceleraprogramador.gerenciamento_pedidos.model.Produto;
 import lombok.experimental.UtilityClass;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
