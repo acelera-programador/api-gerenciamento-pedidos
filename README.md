@@ -15,6 +15,8 @@ java -jar -Dserver.port=8080 \
   -DDB_URL="jdbc:mysql://localhost:3306/api_pedidos?useSSL=false&serverTimezone=UTC" \
   -DDB_USERNAME=acelera \
   -DDB_PASSWORD=programador \
+  -DBASE_URL_MULTT=https://api.multt.digital/api/pagamentos \
+  -DTOKEN_MULTT=59c6d7b0-1180-4aeb-ae0a-c7d30f464a73 \
   gerenciamento-pedidos-0.0.1-SNAPSHOT.jar
 ```
 
@@ -25,6 +27,8 @@ Para configurar as variáveis de ambiente, use o formato abaixo:
 DB_PASSWORD=programador;
 DB_URL=jdbc:mysql://localhost:3306/api_pedidos?useSSL=false&serverTimezone=UTC;
 DB_USERNAME=acelera;
+BASE_URL_MULTT=https://api.multt.digital/api/pagamentos;
+TOKEN_MULTT=59c6d7b0-1180-4aeb-ae0a-c7d30f464a73;
 SERVER_PORT=8080
 ```
 
@@ -59,6 +63,10 @@ INSERT INTO roles_usuario (usuario_id, role_id) VALUES (1, 3);
 ```
 
 ---
+
+
+## Swagger Integração pagamentos
+https://api.multt.digital/swagger
 
 ## Contato
 Para dúvidas ou sugestões, entre em contato:
